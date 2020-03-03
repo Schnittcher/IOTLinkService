@@ -19,6 +19,7 @@ Mit dem Modul ist es möglich Systeminformationen eines Windows Rechners über M
 
 * mindestens IPS Version 5.0
 * IOTLink mit den Windows Monitor und Commands Addons (https://gitlab.com/iotlink/iotlink)
+* Im Windows Monitor Addon das Senden eines Screenshots abschalten, ansonsten stürtzt IP-Symcon ab
 
 ## 2. Enthaltene Module
 
