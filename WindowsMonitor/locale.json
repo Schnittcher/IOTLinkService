@@ -1,0 +1,31 @@
+{
+    "translations": {
+        "de": {
+            "State": "Status",
+            "Battery State": "Batterie Status",
+            "Current User": "Aktueller Benutzer",
+            "Idle Time": "Leerlauf Zeit",
+            "Uptime": "Betriebszeit",
+            "Boot Time": "Boot Zeit",
+            "CPU Usage": "CPU Nutzung",
+            "Memory Usage": "Speicher Nutzung",
+            "Memory Available": "Speicher frei",
+            "Memory Used": "Speicher in Benutzung",
+            "Memory Total": "Speicher gesamt",
+            "Battery Remaining": "Batterie verbleibend",
+            "Battery Remaining Time": "Batterie verbleibende Zeit",
+            "Battery Predicted Lifetime": "Voraussichtliche Lebensdauer der Batterie",
+            "HDD usage": "Festplattennutzung",
+            "HDD Total size": "Festplattengesamtgröße",
+            "HDD Total free space": "Festplatte gesamter freier Speicherplatz",
+            "HDD free Space": "Festplatte freie Speicher",
+            "HDD used Space": "Festplatte benutzter Speicher",
+            "HDD format": "Festplattenformat",
+            "HDD Label": "Festplatten Bezeichnung",
+            "IPv4 Address": "IPv4 Adresse",
+            "IPv6 Address": "IPv6 Adresse",
+            "Port Speed": "Port Geschwindigkeit",
+            "Wired Network State": "Status des kabelgebundenen Netzwerks"
+        }
+    }
+}

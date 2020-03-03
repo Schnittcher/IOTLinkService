@@ -1,0 +1,12 @@
+{
+    "id": "{D26A3833-E3A9-EA66-EF98-5F8D36B4E6FC}",
+    "author": "Kai Schnittcher",
+    "name": "IOTLinkService",
+    "url": "https://www.deinsamrthome.info",
+    "compatibility": {
+        "version": "5.0"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 0
+}

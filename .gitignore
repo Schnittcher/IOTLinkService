@@ -1,0 +1,5 @@
+.DS_Store
+.idea/
+libs/composer.*
+libs/phpunit.*
+.vscode/*

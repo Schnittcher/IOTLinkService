@@ -1,0 +1,9 @@
+{
+    "elements": [
+        { "type": "ValidationTextBox", "name": "Prefix", "caption": "Prefix" },
+        { "type": "ValidationTextBox", "name": "DomainName", "caption": "Domainname" },
+        { "type": "ValidationTextBox", "name": "Computername", "caption": "Computername" }
+    ],
+    "actions": [],
+    "status": []
+}

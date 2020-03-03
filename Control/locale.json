@@ -1,0 +1,21 @@
+{
+    "translations": {
+        "de": {
+            "Control": "Steuerung",
+            "Display": "Monitor",
+            "Off": "Aus",
+            "On": "An",
+            "Lock User": "Benutzer sperren",
+            "Logoff User": "Benutzer ausloggen",
+            "Mute": "Stumm",
+            "Playback": "Wiedergabe",
+            "Back": "Zurück",
+            "Play / Pause": "Play / Pause",
+            "Stop": "Stop",
+            "Next": "Nächster",
+            "Volume": "Lautstärke",
+            "Shutdown": "Herunterfahren",
+            "Reboot": "Neustart"
+        }
+    }
+}
