@@ -18,13 +18,19 @@ require_once __DIR__ . '/../libs/helper/VariableProfileHelper.php';
 
             $this->RegisterProfileInteger('IOT.MemoryMB', 'Graph', '', ' MB', 0, 0, 1);
             $this->RegisterProfileInteger('IOT.NetworkSpeed', 'Network', '', ' Mbps', 0, 0, 1);
+            $this->RegisterProfileInteger('IOT.Clock', 'Clock', '', '', 0, 0, 1);
+            $this->RegisterProfileInteger('IOT.Battery', 'Battery', '', '', 0, 0, 1);
+            $this->RegisterProfileString('IOT.People','People');
+            $this->RegisterProfileString('IOT.ClockString','Clock');
+            $this->RegisterProfileString('IOT.HDD','Information');
+            $this->RegisterProfileString('IOT.Network','Network');
 
             $this->RegisterVariableBoolean('power_state', $this->Translate('State'), '~Switch', 0);
             $this->RegisterVariableBoolean('battery_state', $this->Translate('Battery State'), '~Switch', 1);
-            $this->RegisterVariableString('current_user', $this->Translate('Crrent User'), '', 2);
-            $this->RegisterVariableInteger('idle_time', $this->Translate('Idle Time'), '', 3);
-            $this->RegisterVariableString('uptime', $this->Translate('Uptime'), '', 4);
-            $this->RegisterVariableString('boot_time', $this->Translate('Boot Time'), '', 5);
+            $this->RegisterVariableString('current_user', $this->Translate('Crrent User'), 'IOT.People', 2);
+            $this->RegisterVariableInteger('idle_time', $this->Translate('Idle Time'), 'IOT.Clock', 3);
+            $this->RegisterVariableString('uptime', $this->Translate('Uptime'), 'IOT.ClockString', 4);
+            $this->RegisterVariableString('boot_time', $this->Translate('Boot Time'), 'IOT.ClockString', 5);
             $this->RegisterVariableInteger('cpu_usage', $this->Translate('CPU Usage'), '~Intensity.100', 6);
             $this->RegisterVariableInteger('memory_usage', $this->Translate('Memory Usage'), '~Intensity.100', 7);
             $this->RegisterVariableInteger('memory_available', $this->Translate('Memory Available'), 'IOT.MemoryMB', 8);
@@ -32,33 +38,21 @@ require_once __DIR__ . '/../libs/helper/VariableProfileHelper.php';
             $this->RegisterVariableInteger('memory_total', $this->Translate('Memory Total'), 'IOT.MemoryMB', 10);
 
             $this->RegisterVariableInteger('battery_remaining', $this->Translate('Battery Remaning'), '~Battery.100', 11);
-            $this->RegisterVariableInteger('battery_remaining_time', $this->Translate('Battery Remaning Time'), '', 12);
-            $this->RegisterVariableInteger('battery_predicted_lifetime', $this->Translate('Battery Predicted Lifetime'), '', 13);
+            $this->RegisterVariableInteger('battery_remaining_time', $this->Translate('Battery Remaning Time'), 'IOT.Battery', 12);
+            $this->RegisterVariableInteger('battery_predicted_lifetime', $this->Translate('Battery Predicted Lifetime'), 'IOT.Battery', 13);
 
             $this->RegisterVariableInteger('hdd_usage', $this->Translate('HDD usage'), '~Intensity.100', 14);
             $this->RegisterVariableInteger('hdd_total_size', $this->Translate('HDD Total Size'), 'IOT.MemoryMB', 15);
             $this->RegisterVariableInteger('hdd_total_free_space', $this->Translate('HDD Total free Space'), 'IOT.MemoryMB', 16);
             $this->RegisterVariableInteger('hdd_free_space', $this->Translate('HDD free Space'), 'IOT.MemoryMB', 17);
             $this->RegisterVariableInteger('hdd_used_space', $this->Translate('HDD used Space'), 'IOT.MemoryMB', 18);
-            $this->RegisterVariableString('hdd_format', $this->Translate('HDD format'), '', 19);
-            $this->RegisterVariableString('hdd_label', $this->Translate('HDD Label'), '', 20);
+            $this->RegisterVariableString('hdd_format', $this->Translate('HDD format'), 'IOT.HDD', 19);
+            $this->RegisterVariableString('hdd_label', $this->Translate('HDD Label'), 'IOT.HDD', 20);
 
-            $this->RegisterVariableString('ipv4', $this->Translate('IPv4 Address'), '', 21);
-            $this->RegisterVariableString('ipv6', $this->Translate('IPv6 Address'), '', 22);
+            $this->RegisterVariableString('ipv4', $this->Translate('IPv4 Address'), 'IOT.Network', 21);
+            $this->RegisterVariableString('ipv6', $this->Translate('IPv6 Address'), 'IOT.Network', 22);
             $this->RegisterVariableInteger('port_speed', $this->Translate('Port Speed'), 'IOT.NetworkSpeed', 23);
             $this->RegisterVariableBoolean('wired_state', $this->Translate('Wired Network State'), '~Switch', 24);
-
-            IPS_SetIcon($this->GetIDForIdent('current_user'), 'People');
-            IPS_SetIcon($this->GetIDForIdent('idle_time'), 'Clock');
-            IPS_SetIcon($this->GetIDForIdent('uptime'), 'Clock');
-            IPS_SetIcon($this->GetIDForIdent('boot_time'), 'Clock');
-            IPS_SetIcon($this->GetIDForIdent('battery_remaining_time'), 'Battery');
-            IPS_SetIcon($this->GetIDForIdent('battery_predicted_lifetime'), 'Battery');
-            IPS_SetIcon($this->GetIDForIdent('hdd_format'), 'Information');
-            IPS_SetIcon($this->GetIDForIdent('hdd_label'), 'Information');
-            IPS_SetIcon($this->GetIDForIdent('ipv4'), 'Network');
-            IPS_SetIcon($this->GetIDForIdent('ipv6'), 'Network');
-            IPS_SetIcon($this->GetIDForIdent('wired_state'), 'Network');
         }
 
         public function Destroy()

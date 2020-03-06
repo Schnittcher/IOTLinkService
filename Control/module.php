@@ -17,6 +17,8 @@ class Control extends IPSModule
         $this->RegisterPropertyString('DomainName', 'workgroup');
         $this->RegisterPropertyString('Computername', '');
 
+        $this->RegisterProfileString('IOT.People', 'People');
+
         $this->RegisterProfileIntegerEx('IOT.Control', 'Power', '', '', [
             [0, $this->translate('Shutdown'),  '', -1],
             [1, $this->translate('Reboot'),  '', -1],
@@ -41,11 +43,8 @@ class Control extends IPSModule
         $this->RegisterVariableInteger('playback', $this->Translate('Playback'), 'IOT.Playback', 3);
         $this->RegisterVariableInteger('volume', $this->Translate('Volume'), '~Intensity.100', 4);
         $this->RegisterVariableBoolean('mute', $this->Translate('Mute'), '~Switch', 5);
-        $this->RegisterVariableString('userlock', $this->Translate('Lock User'), '', 6);
-        $this->RegisterVariableString('userlogoff', $this->Translate('Logoff User'), '', 7);
-
-        IPS_SetIcon($this->GetIDForIdent('userlock'), 'People');
-        IPS_SetIcon($this->GetIDForIdent('userlogoff'), 'People');
+        $this->RegisterVariableString('userlock', $this->Translate('Lock User'), 'IOT.People', 6);
+        $this->RegisterVariableString('userlogoff', $this->Translate('Logoff User'), 'IOT.People', 7);
 
         $this->SetValue('control', -1);
         $this->SetValue('display', -1);

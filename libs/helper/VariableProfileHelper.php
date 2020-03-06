@@ -121,6 +121,11 @@ trait VariableProfileHelper
         $this->RegisterProfile(VARIABLETYPE_FLOAT, $Name, $Icon, $Prefix, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits);
     }
 
+    protected function RegisterProfileString($Name, $Icon)
+    {
+        $this->RegisterProfile(VARIABLETYPE_STRING, $Name, $Icon, '', '', 0, 0, 0, 0);
+    }
+
     /**
      * Erstell und konfiguriert ein VariablenProfil für den Typ float.
      *
@@ -145,8 +150,10 @@ trait VariableProfileHelper
         }
 
         IPS_SetVariableProfileIcon($Name, $Icon);
-        IPS_SetVariableProfileText($Name, $Prefix, $Suffix);
-        if ($VarTyp != VARIABLETYPE_BOOLEAN) {
+        if ($VarTyp != VARIABLETYPE_STRING) {
+            IPS_SetVariableProfileText($Name, $Prefix, $Suffix);
+        }
+        if ($VarTyp != VARIABLETYPE_BOOLEAN && $VarTyp != VARIABLETYPE_STRING) {
             IPS_SetVariableProfileValues($Name, $MinValue, $MaxValue, $StepSize);
         }
         if ($VarTyp == VARIABLETYPE_FLOAT) {
