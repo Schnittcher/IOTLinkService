@@ -20,10 +20,10 @@ require_once __DIR__ . '/../libs/helper/VariableProfileHelper.php';
             $this->RegisterProfileInteger('IOT.NetworkSpeed', 'Network', '', ' Mbps', 0, 0, 1);
             $this->RegisterProfileInteger('IOT.Clock', 'Clock', '', '', 0, 0, 1);
             $this->RegisterProfileInteger('IOT.Battery', 'Battery', '', '', 0, 0, 1);
-            $this->RegisterProfileString('IOT.People','People');
-            $this->RegisterProfileString('IOT.ClockString','Clock');
-            $this->RegisterProfileString('IOT.HDD','Information');
-            $this->RegisterProfileString('IOT.Network','Network');
+            $this->RegisterProfileString('IOT.People', 'People');
+            $this->RegisterProfileString('IOT.ClockString', 'Clock');
+            $this->RegisterProfileString('IOT.HDD', 'Information');
+            $this->RegisterProfileString('IOT.Network', 'Network');
 
             $this->RegisterVariableBoolean('power_state', $this->Translate('State'), '~Switch', 0);
             $this->RegisterVariableBoolean('battery_state', $this->Translate('Battery State'), '~Switch', 1);
