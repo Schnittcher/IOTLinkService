@@ -74,18 +74,13 @@ require_once __DIR__ . '/../libs/helper/VariableProfileHelper.php';
             $this->SendDebug('JSON', $JSONString, 0);
 
             if (!empty($this->ReadPropertyString('Computername'))) {
-                $data = json_decode($JSONString);
-                switch ($data->DataID) {
-                    case '{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}': // MQTT Server
-                        $Buffer = $data;
-                        break;
-                    case '{DBDA9DF7-5D04-F49D-370A-2B9153D00D9B}': //MQTT Client
-                        $Buffer = json_decode($data->Buffer);
-                        break;
-                    default:
-                        $this->LogMessage('Invalid Parent', KL_ERROR);
-                        return;
+                $Buffer = json_decode($JSONString);
+
+                //Für MQTT Fix in IPS Version 6.3
+                if (IPS_GetKernelDate() > 1670886000) {
+                    $Buffer->Payload = utf8_decode($Buffer->Payload);
                 }
+                
                 if (fnmatch('*windows-monitor/stats/power/status', $Buffer->Topic)) {
                     switch ($Buffer->Payload) {
                         case 'Offline':

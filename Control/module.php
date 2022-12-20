@@ -78,18 +78,13 @@ class Control extends IPSModule
         $this->SendDebug('JSON', $JSONString, 0);
 
         if (!empty($this->ReadPropertyString('Computername'))) {
-            $data = json_decode($JSONString);
-            switch ($data->DataID) {
-                case '{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}': // MQTT Server
-                    $Buffer = $data;
-                    break;
-                case '{DBDA9DF7-5D04-F49D-370A-2B9153D00D9B}': //MQTT Client
-                    $Buffer = json_decode($data->Buffer);
-                    break;
-                default:
-                    $this->LogMessage('Invalid Parent', KL_ERROR);
-                    return;
+            $Buffer = json_decode($JSONString);
+            
+            //Für MQTT Fix in IPS Version 6.3
+            if (IPS_GetKernelDate() > 1670886000) {
+                $Buffer->Payload = utf8_decode($Buffer->Payload);
             }
+
             if (fnmatch('*windows-monitor/stats/media/volume', $Buffer->Topic)) {
                 $this->SetValue('volume', $Buffer->Payload);
             }
@@ -181,7 +176,6 @@ class Control extends IPSModule
     protected function sendMQTT($Topic, $Payload)
     {
         $resultServer = true;
-        $resultClient = true;
         //MQTT Server
         $Server['DataID'] = '{043EA491-0325-4ADD-8FC2-A30C8EEB4D3F}';
         $Server['PacketType'] = 3;
@@ -193,22 +187,7 @@ class Control extends IPSModule
         $this->SendDebug(__FUNCTION__ . 'MQTT Server', $ServerJSON, 0);
         $resultServer = @$this->SendDataToParent($ServerJSON);
 
-        //MQTT Client
-        $Buffer['PacketType'] = 3;
-        $Buffer['QualityOfService'] = 0;
-        $Buffer['Retain'] = false;
-        $Buffer['Topic'] = $Topic;
-        $Buffer['Payload'] = $Payload;
-        $BufferJSON = json_encode($Buffer, JSON_UNESCAPED_SLASHES);
-
-        $Client['DataID'] = '{97475B04-67C3-A74D-C970-E9409B0EFA1D}';
-        $Client['Buffer'] = $BufferJSON;
-
-        $ClientJSON = json_encode($Client);
-        $this->SendDebug(__FUNCTION__ . 'MQTT Client', $ClientJSON, 0);
-        $resultClient = @$this->SendDataToParent($ClientJSON);
-
-        if ($resultServer === false && $resultClient === false) {
+        if ($resultServer === false) {
             $last_error = error_get_last();
             echo $last_error['message'];
         }
